@@ -14,26 +14,33 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import cu.andyromerodev.designpatterns.ui.theme.DesignPatternsTheme
 
+/**
+ * Main activity that demonstrates the use of the Builder pattern to construct different types of pizza.
+ */
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // Setup for the pizza construction using the Builder pattern
         val builder = ItalianPizzaBuilder()
         val director = PizzaDirector(builder)
 
+        // Constructing pizzas using the director
         val margheritaPizza = director.constructMargheritaPizza()
-        Log.d("TAG-PIZZA", margheritaPizza.toString())
-
         val pepperoniPizza = director.constructPepperoniPizza()
+
+        // Logging the constructed pizzas
+        Log.d("TAG-PIZZA", margheritaPizza.toString())
         Log.d("TAG-PIZZA", pepperoniPizza.toString())
 
+        // Setting the content view with Compose UI elements
         setContent {
             DesignPatternsTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+                    // Displaying the constructed pizzas in the UI
                     ShowPizzas(margheritaPizza.toString(), pepperoniPizza.toString())
                 }
             }
@@ -41,15 +48,20 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+/**
+ * A composable function that displays a list of pizzas in the UI.
+ * @param pizzas Vararg parameter that takes a list of pizza descriptions.
+ * @param modifier Modifier to customize the UI element.
+ */
 @Composable
 fun ShowPizzas(vararg pizzas: String, modifier: Modifier = Modifier) {
     Column(modifier = modifier) {
+        // Iterating over each pizza string to create a text element for it
         pizzas.forEach { pizza ->
             Text(text = "Hello $pizza!")
         }
     }
 }
-
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {

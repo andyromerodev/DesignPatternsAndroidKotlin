@@ -1,5 +1,9 @@
 package cu.andyromerodev.designpatterns
 
+/**
+ * Concrete builder for Italian-style pizza that implements the PizzaBuilder interface.
+ */
+
 class ItalianPizzaBuilder : PizzaBuilder {
     private var pizza = Pizza()
 
@@ -19,9 +23,13 @@ class ItalianPizzaBuilder : PizzaBuilder {
         pizza.addTopping(topping)
     }
 
+    /**
+     * Finalizes the building process and returns the completed Pizza object.
+     * Resets the builder to be ready for creating another pizza.
+     */
     override fun build(): Pizza {
         val builtPizza = pizza
-        pizza = Pizza()
+        pizza = Pizza() // Reset for the next build
         return builtPizza
     }
 }
