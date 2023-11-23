@@ -1,4 +1,4 @@
-package cu.andyromerodev.designpatterns
+package cu.andyromerodev.designpatterns.builderPattern
 
 /**
  * Represents a pizza with various components.

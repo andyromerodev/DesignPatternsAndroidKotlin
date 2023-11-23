@@ -1,4 +1,7 @@
-package cu.andyromerodev.designpatterns
+package cu.andyromerodev.designpatterns.builderPattern
+
+import cu.andyromerodev.designpatterns.builderPattern.Pizza
+import cu.andyromerodev.designpatterns.builderPattern.PizzaBuilder
 
 /**
  * The director class that abstracts the complex construction of a pizza.
